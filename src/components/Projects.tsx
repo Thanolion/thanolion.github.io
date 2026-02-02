@@ -1,5 +1,26 @@
 'use client';
 
+interface ProjectLinks {
+  demo?: string;
+  github?: string;
+  store?: string;
+  playStore?: string;
+}
+
+interface Project {
+  id: string;
+  title: string;
+  role: string;
+  description: string;
+  tech: string[];
+  status: string;
+  videoUrls: string[];
+  links: ProjectLinks;
+  challenges: string[];
+  solutions: string[];
+  images: string[];
+}
+
 function isLocalVideo(url: string): boolean {
   return url.startsWith('/') && /\.(mp4|webm|ogg|mov)$/i.test(url);
 }
@@ -35,7 +56,7 @@ function getVideoEmbedUrl(url: string): string | null {
   return null;
 }
 
-const projects = [
+const projects: Project[] = [
   {
     id: "battle-pets",
     title: "Battle Pets – Horizon Worlds",
