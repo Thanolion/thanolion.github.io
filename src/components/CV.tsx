@@ -3,7 +3,7 @@ export default function CV() {
     {
       title: "Game Developer / Programmer",
       company: "Coatsink",
-      period: "July 2023 – Present",
+      period: "July 2023 – February 2026",
       description: "Working on high-profile VR multiplayer games including Gorilla Tag (30-50K MAU). Delivered networking conversion from PUN2 to Fusion, live-ops updates, and core mechanics for Battle Pets – Horizon Worlds."
     },
     {

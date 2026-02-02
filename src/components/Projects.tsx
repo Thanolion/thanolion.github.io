@@ -1,8 +1,17 @@
 'use client';
 
+function isLocalVideo(url: string): boolean {
+  return url.startsWith('/') && /\.(mp4|webm|ogg|mov)$/i.test(url);
+}
+
 function getVideoEmbedUrl(url: string): string | null {
   if (!url) return null;
-  
+
+  // If it's a local video file, return as-is
+  if (isLocalVideo(url)) {
+    return url;
+  }
+
   // If it's already an embed/preview URL, return as-is
   if (url.includes('/preview') || url.includes('/embed')) {
     return url;
@@ -17,12 +26,12 @@ function getVideoEmbedUrl(url: string): string | null {
     }
     return videoId ? `https://www.youtube.com/embed/${videoId}` : null;
   }
-  
+
   if (url.includes('drive.google.com')) {
     const fileId = url.match(/\/d\/([a-zA-Z0-9-_]+)/)?.[1];
     return fileId ? `https://drive.google.com/file/d/${fileId}/preview` : null;
   }
-  
+
   return null;
 }
 
@@ -108,7 +117,7 @@ const projects = [
   {
     id: "broken-grounds",
     title: "Broken Grounds",
-    role: "Project Lead",
+    role: "Technical Lead",
     description: "Led project development implementing all game mechanics with seamless integration. Designed flexible architecture for easy feature additions and intuitive drag-and-drop level design tools. Optimized AI behavior with simple placement systems and conducted extensive stress testing for performance across various devices.",
     tech: ["Unity", "Mobile", "Game Architecture", "AI Systems", "Tools Development", "Performance Optimization"],
     status: "Released",
@@ -200,6 +209,23 @@ const projects = [
     images: [
       "/enchanted-forest.png"
     ]
+  },
+  {
+    id: "prototypes",
+    title: "Prototypes and Tests",
+    role: "Developer",
+    description: "Videos of some prototype projects.",
+    tech: ["Unity"],
+    status: "Prototype",
+    videoUrls: ["/PathFinder.mp4","/tig.mp4","/movePlatformTest.mp4"],
+    links: {},
+    challenges: [
+    ],
+    solutions: [
+    ],
+    images: [
+      "/enchanted-forest.png"
+    ]
   }
 ];
 
@@ -241,16 +267,32 @@ export default function Projects() {
                       <div className="mb-6">
                         <h4 className="text-xl font-semibold text-white mb-3">Videos</h4>
                         <div className={`grid gap-4 ${item.videoUrls.length === 1 ? 'md:grid-cols-1' : item.videoUrls.length === 2 ? 'md:grid-cols-2' : 'md:grid-cols-2 lg:grid-cols-3'}`}>
-                          {item.videoUrls.map((videoUrl, videoIndex) => (
-                            <div key={videoIndex}>
-                              <iframe
-                                src={getVideoEmbedUrl(videoUrl) || undefined}
-                                className="w-full h-96 rounded-lg border border-purple-500/20"
-                                allowFullScreen
-                                title={`${item.title} video ${videoIndex + 1}`}
-                              />
-                            </div>
-                          ))}
+                          {item.videoUrls.map((videoUrl, videoIndex) => {
+                            const embedUrl = getVideoEmbedUrl(videoUrl);
+                            const isLocal = isLocalVideo(videoUrl);
+
+                            return (
+                              <div key={videoIndex}>
+                                {isLocal ? (
+                                  <video
+                                    src={embedUrl || undefined}
+                                    className="w-full h-96 rounded-lg border border-purple-500/20 bg-black object-contain"
+                                    controls
+                                    preload="metadata"
+                                  >
+                                    Your browser does not support the video tag.
+                                  </video>
+                                ) : (
+                                  <iframe
+                                    src={embedUrl || undefined}
+                                    className="w-full h-96 rounded-lg border border-purple-500/20"
+                                    allowFullScreen
+                                    title={`${item.title} video ${videoIndex + 1}`}
+                                  />
+                                )}
+                              </div>
+                            );
+                          })}
                         </div>
                       </div>
                     )}
