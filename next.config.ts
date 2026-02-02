@@ -6,8 +6,6 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true
   },
-  basePath: process.env.NODE_ENV === 'production' ? '/thanolion.github.io' : '',
-  assetPrefix: process.env.NODE_ENV === 'production' ? '/thanolion.github.io' : '',
 };
 
 export default nextConfig;
