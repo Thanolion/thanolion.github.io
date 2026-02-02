@@ -65,7 +65,7 @@ export default function Contact() {
                 </a>
                 
                 <a
-                  href="https://linkedin.com/in/yourprofile"
+                  href="https://www.linkedin.com/in/cullen-heubner"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center text-purple-400 hover:text-purple-300 transition-colors"
@@ -81,7 +81,7 @@ export default function Contact() {
                 </a>
                 
                 <a
-                  href="https://github.com/yourusername"
+                  href="https://github.com/thanolion"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center text-purple-400 hover:text-purple-300 transition-colors"

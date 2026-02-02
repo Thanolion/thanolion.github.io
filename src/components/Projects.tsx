@@ -228,14 +228,13 @@ const projects: Project[] = [
       "Combined scripts, animations, and Timeline for seamless experience"
     ],
     images: [
-      "/enchanted-forest.png"
     ]
   },
   {
     id: "prototypes",
     title: "Prototypes and Tests",
     role: "Developer",
-    description: "Videos of some prototype projects.",
+    description: "Videos of some prototype and works as they progressed.",
     tech: ["Unity"],
     status: "Prototype",
     videoUrls: ["/PathFinder.mp4","/tig.mp4","/movePlatformTest.mp4"],
@@ -245,7 +244,6 @@ const projects: Project[] = [
     solutions: [
     ],
     images: [
-      "/enchanted-forest.png"
     ]
   }
 ];
