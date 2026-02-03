@@ -4,19 +4,19 @@ export default function CV() {
       title: "Game Developer / Programmer",
       company: "Coatsink",
       period: "July 2023 – February 2026",
-      description: "Working on high-profile VR multiplayer games including Gorilla Tag (30-50K MAU). Delivered networking conversion from PUN2 to Fusion, live-ops updates, and core mechanics for Battle Pets – Horizon Worlds."
+      description: "Working on high-profile VR multiplayer games including Gorilla Tag (30-50K MAU). Responsible for technical initiatives in complex networking architecture and system design while collaborating across timezones with international clients. Took ownership of networking conversion from PUN2 to Fusion, delivered live-ops updates, and built core mechanics for Battle Pets – Horizon Worlds."
     },
     {
       title: "Game Developer / Programmer",
       company: "Motionlab Interactive",
       period: "Aug 2018 – Jul 2023",
-      description: "Developed features and tools for multiple live production games with 10-20K MAU. Created procedural dart-making tool that increased in-game sales, built multiplayer systems, and handled live-ops support."
+      description: "Technical development on multiple live production games with 10-20K MAU, creating revenue-driving features and tools. Took games such as Broken Grounds from concept to release. Created procedural dart-making tool that directly increased in-game sales, built multiplayer reconnection and synchronization systems, and handled live-ops support."
     },
     {
       title: "VR Academy Application Developer / Apprentice",
       company: "EON Reality",
       period: "Sep 2016 – Aug 2017",
-      description: "Completed 12-month VR development program (12 out of 50 graduates). Developed JavaScript VR functionality testing, built VR applications for HTC Vive and Oculus Rift, and created AR/VR content used internationally."
+      description: "Completed intensive 12-month VR development program (12 out of 50 graduates). Created innovative JavaScript solutions for HTC Vive testing that became part of the training curriculum. Built VR applications for HTC Vive and Oculus Rift, and created AR/VR content used internationally."
     }
   ];
 
@@ -103,7 +103,7 @@ export default function CV() {
               
               <div className="mt-12">
                 <a
-                  href="/resume.pdf"
+                  href="/Cullen Heubner Resume.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center bg-gradient-to-r from-purple-600 to-pink-600 text-white px-6 py-3 rounded-lg font-semibold hover:from-purple-700 hover:to-pink-700 transition-all duration-300 transform hover:scale-105"

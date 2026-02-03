@@ -64,12 +64,12 @@ const projects: Project[] = [
     description: "Built core mechanics for this VR multiplayer experience, including gameplay programming, multiplayer logic, procedural generation, and AI systems for Meta's Horizon Worlds platform.",
     tech: ["Unity", "VR", "Multiplayer", "AI Systems", "Procedural Generation"],
     status: "In Development",
-    videoUrls: [],
+    videoUrls: ["/BattleTreadmillTest.mp4","/BattlekinVid1.mp4","/BattlekinVid2.mp4"],
     links: {},
     challenges: [],
     solutions: [],
     images: [
-      "/BattleKin1.png","/BattleKin2.png","/BattleKin3.png"
+      "/BattleKin4.jpg","BattleKin5.png","/BattleKin1.png","/BattleKin2.png","/BattleKin3.png"
     ]
   },
   {
@@ -142,7 +142,7 @@ const projects: Project[] = [
     description: "Led project development implementing all game mechanics with seamless integration. Designed flexible architecture for easy feature additions and intuitive drag-and-drop level design tools. Optimized AI behavior with simple placement systems and conducted extensive stress testing for performance across various devices.",
     tech: ["Unity", "Mobile", "Game Architecture", "AI Systems", "Tools Development", "Performance Optimization"],
     status: "Released",
-    videoUrls: ["https://www.youtube.com/watch?v=mVDXkYxU_PA"],
+    videoUrls: ["https://www.youtube.com/watch?v=mVDXkYxU_PA","/movePlatformTest.mp4"],
     links: {
       playStore: "https://play.google.com/store/apps/details?id=com.motionlab.critter&hl=en_GB"
     },
@@ -160,7 +160,6 @@ const projects: Project[] = [
       "Extensive stress testing and debugging for optimal performance"
     ],
     images: [
-      "/broken-grounds-1.png"
     ]
   },
   {
@@ -170,7 +169,7 @@ const projects: Project[] = [
     description: "Developed character controller and networking systems for multiplayer dungeon crawler. Implemented hybrid server-client authority using PUN2 with client-side prediction based on latency. Used modular prefabs for procedural level generation to create dynamic dungeon experiences.",
     tech: ["Unity", "Mobile", "PUN2", "Networking", "Procedural Generation", "Client Prediction"],
     status: "Shelved",
-    videoUrls: ["https://drive.google.com/file/d/1xshnUhVaHEGC6V7H2angYFOB81-p8aV6/view?usp=sharing"],
+    videoUrls: ["https://drive.google.com/file/d/1xshnUhVaHEGC6V7H2angYFOB81-p8aV6/view?usp=sharing","/TeleportBetweenRoomsTest.mp4"],
     links: {},
     challenges: [
       "Keeping all clients synchronized",
@@ -237,7 +236,7 @@ const projects: Project[] = [
     description: "Videos of some prototype and works as they progressed.",
     tech: ["Unity"],
     status: "Prototype",
-    videoUrls: ["/PathFinder.mp4","/tig.mp4","/movePlatformTest.mp4"],
+    videoUrls: ["/PathFinder.mp4","/tig.mp4","/LioPrototype.mp4"],
     links: {},
     challenges: [
     ],
@@ -295,7 +294,7 @@ export default function Projects() {
                                 {isLocal ? (
                                   <video
                                     src={embedUrl || undefined}
-                                    className="w-full h-96 rounded-lg border border-purple-500/20 bg-black object-contain"
+                                    className="w-full aspect-video rounded-lg border border-purple-500/20 bg-black object-co"
                                     controls
                                     preload="metadata"
                                   >
@@ -304,7 +303,7 @@ export default function Projects() {
                                 ) : (
                                   <iframe
                                     src={embedUrl || undefined}
-                                    className="w-full h-96 rounded-lg border border-purple-500/20"
+                                    className="w-full aspect-video rounded-lg border border-purple-500/20 bg-black object-co"
                                     allowFullScreen
                                     title={`${item.title} video ${videoIndex + 1}`}
                                   />
@@ -360,9 +359,9 @@ export default function Projects() {
                 
                 {/* Detailed Section - Only show if there are challenges/solutions */}
                 {(item.challenges.length > 0 || item.images.length > 0) && (
-                  <div className="grid md:grid-cols-3 gap-8 border-t border-purple-500/20 pt-6">
-                    <div className="md:col-span-2">
-                      <div className="grid md:grid-cols-2 gap-6">
+                  <div className="border-t border-purple-500/20 pt-6">
+                    {item.challenges.length > 0 && (
+                      <div className="grid md:grid-cols-2 gap-6 mb-8">
                         <div>
                           <h4 className="text-xl font-semibold text-white mb-3">Challenges</h4>
                           <ul className="space-y-2">
@@ -374,7 +373,7 @@ export default function Projects() {
                             ))}
                           </ul>
                         </div>
-                        
+
                         <div>
                           <h4 className="text-xl font-semibold text-white mb-3">Solutions</h4>
                           <ul className="space-y-2">
@@ -387,12 +386,12 @@ export default function Projects() {
                           </ul>
                         </div>
                       </div>
-                    </div>
-                    
+                    )}
+
                     {item.images.length > 0 && (
-                      <div className="md:col-span-1">
+                      <div>
                         <h4 className="text-xl font-semibold text-white mb-3">Project Images</h4>
-                        <div className="space-y-4">
+                        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                           {item.images.map((image, i) => (
                             <div key={i} className="bg-slate-700/50 rounded-lg p-2 border border-purple-500/20">
                               <img
