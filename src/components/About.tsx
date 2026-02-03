@@ -16,19 +16,22 @@ export default function About() {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <p className="text-gray-300 text-lg leading-relaxed mb-6">
-                I'm a Unity Developer with 7+ years of experience delivering production games 
-                to 50K+ users, including titles like Gorilla Tag and Darts Match Live. 
-                I specialize in gameplay programming, AI systems, procedural generation, and multiplayer networking.
+                I'm an experienced Unity Developer with 7+ years delivering production games
+                to 100K+ MAU, including titles like Gorilla Tag and Darts Match Live.
+                I have a proven track record creating revenue-generating features and tools across
+                gameplay mechanics, AI systems, procedural generation, and multiplayer networking.
               </p>
-              
+
               <p className="text-gray-300 text-lg leading-relaxed mb-6">
-                My journey in game development started with VR development training at EON Reality, 
-                where I graduated as one of 12 out of 50 enrollments. I love solving complex problems 
-                and creating features that increase in-game sales and improve player experience.
+                As a strong technical contributor, I bring experience in cross-timezone collaboration,
+                technical guidance, and cross-discipline communication. My journey started with intensive
+                VR development training at EON Reality, where I graduated as one of 12 out of 50 enrollments.
+                I combine deep Unity expertise with business impact through tools that directly increase
+                in-game sales and enhance player experience.
               </p>
-              
+
               <p className="text-gray-300 text-lg leading-relaxed">
-                When I'm not coding, you can find me exploring VR/AR technologies, 3D modelling, 
+                When I'm not coding, you can find me out hiking, playing one sport or another, practicing photography, exploring VR/AR and other game technologies, 3D modelling,
                 traveling, or playing piano - always seeking inspiration for my next innovative project.
               </p>
             </div>
