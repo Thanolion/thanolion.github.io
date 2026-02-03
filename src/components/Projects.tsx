@@ -1,5 +1,7 @@
 'use client';
 
+import { useState, useEffect } from 'react';
+
 interface ProjectLinks {
   demo?: string;
   github?: string;
@@ -65,7 +67,7 @@ const projects: Project[] = [
     tech: ["Unity", "VR", "Multiplayer", "AI Systems", "Procedural Generation"],
     status: "In Development",
     videoUrls: ["/BattleTreadmillTest.mp4","/BattlekinVid1.mp4","/BattlekinVid2.mp4"],
-    links: {},
+    links: {store:"https://horizon.meta.com/world/626371176927879/?locale=en_GB"},
     challenges: [],
     solutions: [],
     images: [
@@ -247,7 +249,60 @@ const projects: Project[] = [
   }
 ];
 
+interface ImageLightboxProps {
+  imageSrc: string;
+  imageAlt: string;
+  onClose: () => void;
+}
+
+function ImageLightbox({ imageSrc, imageAlt, onClose }: ImageLightboxProps) {
+  // Handle ESC key press and prevent body scroll
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        onClose();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    // Prevent scrolling when lightbox is open
+    document.body.style.overflow = 'hidden';
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = 'unset';
+    };
+  }, [onClose]);
+
+  return (
+    <div
+      className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4 animate-in fade-in duration-200"
+      onClick={onClose}
+    >
+      <button
+        onClick={onClose}
+        className="absolute top-4 right-4 text-white hover:text-purple-400 transition-colors z-10"
+        aria-label="Close lightbox"
+      >
+        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+      <div className="relative max-w-7xl max-h-[90vh] w-full h-full flex items-center justify-center">
+        <img
+          src={imageSrc}
+          alt={imageAlt}
+          className="max-w-full max-h-full object-contain rounded-lg"
+          onClick={(e) => e.stopPropagation()}
+        />
+      </div>
+    </div>
+  );
+}
+
 export default function Projects() {
+  const [lightboxImage, setLightboxImage] = useState<{ src: string; alt: string } | null>(null);
+
   return (
     <section id="projects" className="py-20 bg-slate-800/30">
       <div className="container mx-auto px-4">
@@ -255,7 +310,15 @@ export default function Projects() {
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-12 text-center">
             My Work
           </h2>
-          
+
+          {lightboxImage && (
+            <ImageLightbox
+              imageSrc={lightboxImage.src}
+              imageAlt={lightboxImage.alt}
+              onClose={() => setLightboxImage(null)}
+            />
+          )}
+
           <div className="space-y-16">
             {projects.map((item, index) => (
               <div key={item.id} className="bg-slate-800/50 rounded-xl p-8 border border-purple-500/20">
@@ -393,17 +456,38 @@ export default function Projects() {
                         <h4 className="text-xl font-semibold text-white mb-3">Project Images</h4>
                         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                           {item.images.map((image, i) => (
-                            <div key={i} className="bg-slate-700/50 rounded-lg p-2 border border-purple-500/20">
-                              <img
-                                src={image}
-                                alt={`${item.title} screenshot ${i + 1}`}
-                                className="w-full h-32 object-cover rounded-lg"
-                                onError={(e) => {
-                                  const target = e.target as HTMLImageElement;
-                                  target.style.display = 'none';
-                                  target.nextElementSibling?.classList.remove('hidden');
-                                }}
-                              />
+                            <div
+                              key={i}
+                              className="bg-slate-700/50 rounded-lg p-2 border border-purple-500/20 group cursor-pointer relative overflow-hidden transition-all duration-300 hover:border-purple-400/50 hover:shadow-lg hover:shadow-purple-500/20"
+                              onClick={() => setLightboxImage({ src: image, alt: `${item.title} screenshot ${i + 1}` })}
+                            >
+                              <div className="relative">
+                                <img
+                                  src={image}
+                                  alt={`${item.title} screenshot ${i + 1}`}
+                                  className="w-full h-32 object-cover rounded-lg transition-transform duration-300 group-hover:scale-105"
+                                  onError={(e) => {
+                                    const target = e.target as HTMLImageElement;
+                                    target.style.display = 'none';
+                                    target.nextElementSibling?.classList.remove('hidden');
+                                  }}
+                                />
+                                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-300 rounded-lg flex items-center justify-center">
+                                  <svg
+                                    className="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    viewBox="0 0 24 24"
+                                  >
+                                    <path
+                                      strokeLinecap="round"
+                                      strokeLinejoin="round"
+                                      strokeWidth={2}
+                                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"
+                                    />
+                                  </svg>
+                                </div>
+                              </div>
                               <div className="hidden w-full h-32 bg-slate-600/50 rounded-lg flex items-center justify-center">
                                 <span className="text-gray-400 text-sm">Image not found: {image}</span>
                               </div>
