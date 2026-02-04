@@ -91,12 +91,12 @@ const projects: Project[] = [
   },
   {
     id: "ccc",
-    title: "Complete Character controller",
+    title: "Complete Character Controller",
     role: "Lead Developer",
     description: "A personal project. A multipurpose character controller with various perspectives for developers to choose from: First person, third person, side scroller, three quarter/topdown.",
     tech: ["Unity", "Cross-platform", "Animation", "Editor Tools", "Tools"],
     status: "In Development",
-    videoUrls: ["/CCCPortfoliovid.mp4"],
+    videoUrls: ["/CCCShowcase.mp4"],
     links: {},
     challenges: [
       "I wanted a drag and drop system that I could use in my own projects and put onto the unity store eventually for others to purchase and use as well.",
