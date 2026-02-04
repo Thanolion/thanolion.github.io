@@ -92,15 +92,35 @@ const projects: Project[] = [
   {
     id: "ccc",
     title: "Complete Character controller",
-    role: "Unity Developer",
+    role: "Lead Developer",
     description: "A personal project. A multipurpose character controller with various perspectives for developers to choose from: First person, third person, side scroller, three quarter/topdown.",
-    tech: ["Unity", "Mobile", "Animation", "Editor Tools", "Tools"],
+    tech: ["Unity", "Cross-platform", "Animation", "Editor Tools", "Tools"],
     status: "In Development",
-    videoUrls: [],
+    videoUrls: ["/CCCPortfoliovid.mp4"],
     links: {},
     challenges: [
+      "I wanted a drag and drop system that I could use in my own projects and put onto the unity store eventually for others to purchase and use as well.",
+      "Making it so that any humanoid model could be used witht the animations that I or others add.",
+      "Allowing change in perspective at any point in time, giving the user a seamless move from one perspective to another."
     ],
     solutions: [
+    ],
+    images: []
+  },
+  {
+    id: "foosball",
+    title: "Foosball Prototype",
+    role: "Lead Developer, Animator, 3d modeller",
+    description: "A free-to-play, ad driven, multiplayer foosball inspired mobile game. Still in development but the idea is to make the control scheme as intuitive as possible and then have players play together and against each other. Competing on the leaderboards and making in-app purchases in the shop.",
+    tech: ["Unity", "SQL", "PHP", "Blender", "Editor Tools", "Tools"],
+    status: "In Development",
+    videoUrls: ["/FoosballGameplay.mp4","/FoosballControlsShowcase.mp4"],
+    links: {},
+    challenges: [
+      "So far, the controls. Trying to make it so that players can use both thumbs easily and intuitively while in landscape mode has been difficult"
+    ],
+    solutions: [
+      "Still working on it, but I'm designing multiple control schemes as well as a in game controls editor and will get it out to playtesters for feedback to see which works best by default."
     ],
     images: []
   },
